@@ -20,11 +20,12 @@ func (l *linkedList) prepend(n *node) {
 }
 
 func (l linkedList) printListData() {
+	tempLength := l.length
 	toPrint := l.head
-	for l.length != 0 {
+	for tempLength != 0 {
 		fmt.Printf("%d ", toPrint.data)
 		toPrint = toPrint.next
-		l.length--
+		tempLength--
 	}
 	fmt.Printf("\n")
 }
