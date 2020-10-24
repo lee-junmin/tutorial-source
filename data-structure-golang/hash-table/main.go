@@ -13,6 +13,7 @@ type HashTable struct {
 // bucket is a linked list in each slot of the hash table array
 type bucket struct {
 	head *bucketNode
+	size int
 }
 
 // bucketNode is a linked list node that holds the key
@@ -47,6 +48,7 @@ func (b *bucket) insert(k string) {
 		newNode := &bucketNode{key: k}
 		newNode.next = b.head
 		b.head = newNode
+		b.size++
 	} else {
 		fmt.Println(k, "already exists")
 	}
@@ -69,6 +71,7 @@ func (b *bucket) delete(k string) {
 
 	if b.head.key == k {
 		b.head = b.head.next
+		b.size--
 		return
 	}
 
@@ -77,6 +80,7 @@ func (b *bucket) delete(k string) {
 		if previousNode.next.key == k {
 			//delete
 			previousNode.next = previousNode.next.next
+			b.size--
 			return
 		}
 		previousNode = previousNode.next
