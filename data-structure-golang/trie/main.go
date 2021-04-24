@@ -7,7 +7,7 @@ const AlphabetSize = 26
 
 // Node represents each node in the trie
 type Node struct {
-	children [26]*Node
+	children [AlphabetSize]*Node
 	isEnd    bool
 }
 
